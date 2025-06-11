@@ -63,18 +63,23 @@ Make sure you have installed:
 # 1. Clone & Enter Project
 git clone https://github.com/vansh-rajvanshi/Ecommerce.git<br>
 cd Ecommerce<br>
-# 2. Database Configuration
+# 2. Cloudnary Configration
+## Update src/main/Config/CloudnaryConfig with your Cloudnary settings:
+- Add Cloud Name
+- Add Api key
+- Add Api Secret
+# 3. Database Configuration
 ## Update src/main/resources/application.properties with your DB, File, Mail settings:
 spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce<br>
 spring.datasource.username=root<br>
 spring.datasource.password=yourPass<br>
 spring.jpa.hibernate.ddl-auto=update<br>
 spring.jpa.show-sql=true<br>
-# 3. File Upload Configration
+# 4. File Upload Configration
 spring.servlet.multipart.enabled=true<br>
 spring.servlet.multipart.max-file-size=20MB<br>
 spring.servlet.multipart.max-request-size=20MB<br>
-# 4. SMTP Configuration
+# 5. SMTP Configuration
 spring.mail.host=smtp.gmail.com<br>
 spring.mail.port=587<br>
 spring.mail.username=your mail<br>
