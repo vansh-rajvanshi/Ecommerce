@@ -89,3 +89,20 @@ spring.mail.properties.mail.smtp.timeout=5000<br>
 spring.mail.properties.mail.smtp.writetimeout=5000<br>
 # 5. Build the Project
 mvn clean install
+# 🧩Running the Application
+## Run from Your IDE
+In IntelliJ IDEA, Spring Tool Suite, Eclipse, or VS Code:
+
+- Import the project as a Maven project (if not already).
+
+- Locate your main class (e.g., Application.java) annotated with @SpringBootApplication.
+
+- In IntelliJ: click the 🔼 icon in the gutter or use Ctrl+Shift+F10 
+
+- In Eclipse/STS: right-click → Run As → Spring Boot App or Java Application 
+
+It will run an exploded version of your app using embedded Tomcat—just like Maven does 
+
+# 🌍 Access the Website
+## After launching, visit:
+http://localhost:8080/
