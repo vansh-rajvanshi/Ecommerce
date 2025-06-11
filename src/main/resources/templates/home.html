@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HexaFusion</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div th:insert="~{header:: header}"></div>
+        <div class="row">
+            <div class="col-8">
+                <h1>Here shopping becomes <br/>simple!</h1>
+                <p>"We trust something in a grocery store and assume it's good. We don't learn about the most precious thing in life—<br/>the food we put in our body. Educate yourself!"</p>
+                <a th:href="@{/allProduct}" class="btn">Explore Now &#10140;</a>
+            </div>
+            <div class="col-8">
+                <img src="/Image/speaker.jpeg" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ---------categories--------   -->
+<div class="small-container">
+    <h2 class="title">Categories</h2>
+    <div class="row">
+        <div class="col-4" th:each="category : ${category}">
+            <img th:src="${category.cat_img}" alt="" />
+            <h4>
+                <a th:href="@{/categorywise/{id}(id=${category.id})}" th:text="${category.cat_name}" target="_blank"></a>
+            </h4>
+        </div>
+    </div>
+    <!-- ---------featured products--------   -->
+    <h2 class="title">Featured Products</h2>
+    <div class="row">
+        <div class="col-4" th:each="product : ${featuredproducts}">
+            <img th:src="@{${product.imageUrl}}" alt="" />
+            <h4>
+                <a th:href="@{/productdetail/{id}(id=${product.id})}" th:text="${product.name}" target="_blank"></a>
+            </h4>
+            <p th:text="${product.price} + 'Rs.'"></p>
+        </div>
+    </div>
+</div>
+<!-- -----offer------ -->
+<div class="offer">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-8">
+                <img src="/Image/speaker.jpeg" alt="" />
+            </div>
+            <div class="col-8">
+                <p>Exclusively Available On SiyaShop</p>
+                <h1>Wireless Portable Bluetooth Speakers</h1>
+                <small>B M C Wireless Portable Bluetooth Speakers kt-125 with Mobile Holder, with USB, Memory Card and Bluetooth Connectivity (Kt-125)</small><br>
+                <a th:href="@{/allProduct}" target="_blank" class="btn">Buy Now &#10140</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------testimonial------ -->
+<div class="testimonial">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <p>"We are treat the customer as god. Sales are good due to low profit business, customers are satisfied with us because of the price."</p>
+                <img src="Image/valueandbelief.jpeg" alt="">
+                <h3>Values And Beliefs</h3>
+            </div>
+            <div class="col-3">
+                <p>"We are treat the customer as god. Sales are good due to low profit business, customers are satisfied with us because of the price."</p>
+                <img src="Image/connection.jpg" alt="">
+                <h3>Build A Connection</h3>
+            </div>
+            <div class="col-3">
+                <p>"We are treat the customer as god. Sales are good due to low profit business, customers are satisfied with us because of the price."</p>
+                <img src="Image/certification.jpg" alt="">
+                <h3>Certifications, Awards</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -------brands------ -->
+<div class="brands">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-5">
+                <img src="Image/Apple.png">
+            </div>
+            <div class="col-5">
+                <img src="Image/Boat.png">
+            </div>
+            <div class="col-5">
+                <img src="Image/JBL.jpeg">
+            </div>
+            <div class="col-5">
+                <img src="Image/Realme.png">
+            </div>
+            <div class="col-5">
+                <img src="Image/Samsung.png">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -------footer------ -->
+<footer class="footer">
+    <div th:insert="~{footer::footer}"></div>
+</footer>
+<!-- -------js for toggle menu----- -->
+<script src="js/script.js"></script>
+</body>
+</html>

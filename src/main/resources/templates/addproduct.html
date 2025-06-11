@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/style3.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <title>Add Product</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{sidebar::sidebar}"></div>
+</div>
+<div class="form-container">
+    <h1>Add Product</h1>
+    <form action="#" th:action="@{/addProduct}" th:object="${newProduct}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter product name" required />
+        </div>
+        <select id="category" name="category">
+            <option>Select</option>
+            <option th:each="categories : ${addProduct}" th:value="${categories.id}" th:text="${categories.cat_name}"></option>
+        </select>
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" id="price" th:field="*{price}" placeholder="Enter price" required />
+        </div>
+        <div>
+            <label for="originalPrice">Original Price:</label>
+            <input type="text" id="originalPrice" th:field="*{originalPrice}" placeholder="Enter original price" required />
+        </div>
+        <div>
+            <label for="rating">Rating:</label>
+            <input type="text" id="rating" th:field="*{rating}" placeholder="Enter rating" required />
+        </div>
+        <div>
+            <label for="connectivityTechnology">Connectivity Technology:</label>
+            <input type="text" id="connectivityTechnology" th:field="*{connectivityTechnology}" placeholder="Enter connectivity technology" required />
+        </div>
+        <div>
+            <label for="productType">Product Type:</label>
+            <input type="text" id="productType" th:field="*{productType}" placeholder="Enter product type" required />
+        </div>
+        <div>
+            <label for="speakerType">Speaker Type:</label>
+            <input type="text" id="speakerType" th:field="*{speakerType}" placeholder="Enter speaker type" required />
+        </div>
+        <div>
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" th:field="*{brand}" placeholder="Enter brand" required />
+        </div>
+        <div>
+            <label for="modelName">Model Name:</label>
+            <input type="text" id="modelName" th:field="*{modelName}" placeholder="Enter model name" required />
+        </div>
+        <div>
+            <label for="specialFeature">Special Feature:</label>
+            <input type="text" id="specialFeature" th:field="*{specialFeature}" placeholder="Enter special feature" required />
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" placeholder="Enter product description" required></textarea>
+        </div>
+        <div>
+            <label for="imageUrl">Image URL:</label>
+            <input type="file" id="imageUrl"  name="file" placeholder="Enter image URL" required />
+        </div>
+        <div>
+            <img id="image-preview" style="display:none; max-width: 200px; max-height: 200px;" alt="Image Preview"/>
+        </div>
+        <div>
+            <button type="submit">Add Product</button>
+        </div>
+        <div class="message success" th:if="${success}" th:text="${success}"></div>
+        <div class="message error" th:if="${error}" th:text="${error}"></div>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js" integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw==" crossorigin="anonymous"></script>
+<script src="/js/script2.js"></script>
+<script>
+    document.getElementById('imageUrl').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('image-preview');
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>

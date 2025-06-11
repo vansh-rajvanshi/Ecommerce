@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Products</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{header::header}"></div>
+</div>
+<div class="small-container">
+    <div class="row row-2">
+        <h2>All Product</h2>
+        <select>
+            <option>Default Shorting</option>
+            <option>Short by price</option>
+            <option>Short by popularity</option>
+            <option>Short by rating</option>
+            <option>Short by sale</option>
+        </select>
+    </div>
+    <div class="row">
+        <div class="col-4" th:each="product : ${product}">
+            <img th:src="@{${product.imageUrl}}" alt="" />
+            <h4>
+                <a th:href="@{/productdetail/{id}(id=${product.id})}" th:text="${product.name}" target="_blank"></a>
+            </h4>
+            <p th:text="${product.price} + 'Rs.'"></p>
+        </div>
+    </div>
+    <div class="page-btn">
+        <span><a href="fashion-child-product.html">1</span></a>
+        <span><a href="fashion-saree-product.html">2</span></a>
+        <span><a href="categorywise.html">3</span></a>
+        <span><a href="toys-product.html">4</span></a>
+        <span><a href="footwear-product.html">5</span></a>
+        <span><a href="electronics-product.html">6</span></a>
+        <span>➝</span>
+    </div>
+</div>
+<!-- -------footer------ -->
+<footer class="footer">
+    <div th:insert="~{footer::footer}"></div>
+</footer>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

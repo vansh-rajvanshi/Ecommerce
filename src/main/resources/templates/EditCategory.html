@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/css/style3.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <title>Edit Category</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{sidebar::sidebar}"></div>
+</div>
+<div class="form-container">
+    <h2>Edit Category</h2>
+    <form method="post" th:object="${update}" enctype="multipart/form-data">
+<!--        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>-->
+        <input type="hidden" id="category-id" name="id" th:field="*{id}">
+        <label for="category-name">Category Name:</label>
+        <input type="text" id="category-name" name="name" th:field="*{cat_name}" placeholder="Enter the category name..">
+        <label for="category-image">Category Image:</label>
+        <input type="file" id="category-image" name="file">
+        <div>
+            <img id="image-preview" style="display:none; max-width: 200px; max-height: 200px;" alt="Image Preview"/>
+        </div>
+        <button type="submit">Update Category</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js" integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw==" crossorigin="anonymous"></script>
+<script src="/js/script2.js"></script>
+<script>
+    document.getElementById('category-image').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('image-preview');
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>

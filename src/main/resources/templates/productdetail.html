@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{header::header}"></div>
+</div>
+<!-- ---------single product details-------- -->
+<div class="small-container single-product">
+    <div class="row">
+        <!-- Product Images -->
+        <div class="col-2">
+            <img th:src="@{${product.imageUrl}}" width="100%" id="productImg" alt="Product Image" />
+
+            <div class="small-img-row">
+                <div class="small-img-col">
+                    <img th:src="@{${product.imageUrl}}" width="100%" class="small-img" alt="Small Image 1" />
+                </div>
+                <!-- Add additional small images if available -->
+                <div class="small-img-col">
+                    <img th:src="@{${product.imageUrl}}" width="100%" class="small-img" alt="Small Image 2" />
+                </div>
+                <div class="small-img-col">
+                    <img th:src="@{${product.imageUrl}}" width="100%" class="small-img" alt="Small Image 2" />
+                </div>
+                <div class="small-img-col">
+                    <img th:src="@{${product.imageUrl}}" width="100%" class="small-img" alt="Small Image 2" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-2">
+            <p>Home / <span th:text="${product.category.cat_name}">Category</span></p>
+            <h1 th:text="${product.name}">Product Name</h1>
+            <h4 th:text="'Rs.'+${product.price}">Product Price</h4>
+            <p>M.R.P. <s th:text="${product.originalPrice}">Original Price</s></p>
+
+            <!-- Ratings -->
+            <div>
+                <span class="fa fa-star" th:each="i : ${#numbers.sequence(1, 5)}" th:classappend="${i <= product.rating ? ' checked' : ''}"></span>
+                <p th:text="${product.rating} + ' stars out of 5'">Rating</p>
+            </div>
+
+            <!-- Quantity Input and Add to Cart Button -->
+            <div>
+                <input type="number" value="1" min="1" id="quantity" />
+                <button onclick="addToCart()" class="btn">Add To Cart</button>
+            </div>
+
+            <!-- Product Details -->
+            <h3>Product Details</h3>
+            <br>
+            <p><b>Product Type:</b> <span th:text="${product.productType}"></span></p>
+            <p><b>Connectivity Technology:</b> <span th:text="${product.connectivityTechnology}"></span></p>
+            <p><b>Speaker Type:</b> <span th:text="${product.speakerType}"></span></p>
+            <p><b>Brand:</b> <span th:text="${product.brand}">d</span></p>
+            <p><b>Model Name:</b> <span th:text="${product.modelName}"></span></p>
+            <p><b>Special Feature:</b> <span th:text="${product.specialFeature}"></span></p>
+
+            <hr>
+        </div>
+    </div>
+</div>
+
+<!-- -------------title------------- -->
+<div class="small-container">
+    <div class="row row-2">
+        <h2>Related Products</h2>
+        <p>View More</p>
+    </div>
+</div>
+
+<!-- ------product-------- -->
+<div class="small-container">
+    <div class="row">
+        <div class="col-4" th:each="product : ${related}">
+            <img th:src="@{${product.imageUrl}}" alt="" />
+            <h4>
+                <a th:href="@{/productdetail/{id}(id=${product.id})}" th:text="${product.name}" target="_blank"></a>
+            </h4>
+            <p th:text="${product.price} + 'Rs.'"></p>
+        </div>
+    </div>
+</div>
+
+<!-- -------footer------ -->
+<footer class="footer">
+    <div th:insert="~{footer::footer}"></div>
+</footer>
+<!-- -----js for product gallery------ -->
+<script src="/js/script.js"></script>
+<!-- JavaScript -->
+<script th:inline="javascript">
+    function addToCart() {
+        // Get dynamic values from Thymeleaf
+        var productName = /*[[${product.name}]]*/ 'Product Name';
+        var productPrice = parseFloat(/*[[${product.price}]]*/ '0'); // Use parseFloat for decimal prices
+        var productImage = /*[[${product.imageUrl}]]*/ '/product.png';
+
+        // Get quantity and ensure it's a valid number (defaults to 1 if empty or invalid)
+        var quantity = parseInt(document.getElementById('quantity').value) || 1;
+
+        // Calculate total price for the current product
+        var totalPrice = productPrice * quantity;
+
+        // Create and append the cart item
+        var cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.setAttribute('data-price', totalPrice); // Store item price in a custom attribute
+        cartItem.innerHTML = `
+            <img src="${productImage}" width="50px" height="50px" alt="${productName}" />
+            <span>${productName}</span>
+            <span>Quantity: ${quantity}</span>
+            <span>Total: Rs. ${totalPrice.toFixed(2)}</span>
+            <button onclick="removeFromCart(this)">Remove</button>
+        `;
+        document.getElementById('cartItems').appendChild(cartItem);
+
+        // Update the total price in the cart
+        updateCartTotal();
+    }
+
+    function removeFromCart(button) {
+        var cartItem = button.parentElement;
+        cartItem.remove();
+
+        // Update the total price after removing an item
+        updateCartTotal();
+    }
+
+    function updateCartTotal() {
+        let total = 0;
+
+        // Loop through all cart items to calculate the total price
+        document.querySelectorAll('.cart-item').forEach(item => {
+            total += parseFloat(item.getAttribute('data-price')) || 0;
+        });
+
+        // Update the total price display in the cart
+        document.getElementById('cartTotal').innerText = `Total: Rs. ${total.toFixed(2)}`;
+    }
+
+    function toggleCart() {
+        var cartSidebar = document.getElementById('cartSidebar');
+        if (cartSidebar.style.right === '0px') {
+            cartSidebar.style.right = '-500px';
+        } else {
+            cartSidebar.style.right = '0px';
+        }
+    }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="sidebar-container">
+    <div class="sidebar">
+        <div class="profile-header">
+            <img src="/Image/logo.png" alt="User Avatar" class="avatar">
+            <h2 th:text="${user.name}"></h2>
+            <p th:text="${user.email}"></p>
+        </div>
+        <ul class="menu">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/errorpage}">Orders</a></li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content1">
+        <h1>Hello, <span th:text="${user.name}"></span>!</h1>
+        <p>Welcome to your profile dashboard. Here you can manage your account settings, view your orders, and more.</p>
+        <div class="profile-details">
+            <p><strong>Username:</strong> <span th:text="${user.name}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

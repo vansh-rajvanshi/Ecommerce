@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About us</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" th:href="@{/css/style2.css}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="container">
+  <div th:insert="~{header::header}"></div>
+</div>
+<header class="header2">
+  <h1>About Us</h1>
+  <p>Innovating Technology, Empowering Lifestyles</p>
+</header>
+
+<section class="about">
+  <h2>Welcome to HexaFusion</h2>
+  <p>At <strong>HexaFusion</strong>, we are passionate about connecting people with cutting-edge technology. Our mission is to bring the latest innovations in electronics to your doorstep, offering you exceptional products to enhance your daily life.</p>
+</section>
+
+<section class="story">
+  <h2>Our Story</h2>
+  <p>Founded with a vision to bridge the gap between technology and convenience, <strong>HexaFusion</strong> started as a small idea driven by curiosity and innovation. Today, we stand as a trusted platform for top-quality electronics, offering products that are reliable, high-performance, and future-ready.</p>
+</section>
+
+<section class="offers">
+  <h2>What We Offer</h2>
+  <ul>
+    <li>Latest Gadgets: Smartphones, tablets, laptops, and wearables.</li>
+    <li>Smart Home Solutions: IoT devices, smart lighting, and appliances.</li>
+    <li>Top Brands & Accessories: Competitive prices on trusted brands.</li>
+    <li>Customer-Centric Experience: Fast delivery, easy returns, and secure payments.</li>
+  </ul>
+</section>
+
+<section class="values">
+  <h2>Our Values</h2>
+  <div class="values-grid">
+    <div class="value-item">
+      <h3>Innovation</h3>
+      <p>We believe in staying ahead of trends and continuously introducing the latest tech.</p>
+    </div>
+    <div class="value-item">
+      <h3>Quality</h3>
+      <p>Each product undergoes strict quality checks to ensure reliability.</p>
+    </div>
+    <div class="value-item">
+      <h3>Customer First</h3>
+      <p>Our customers are at the heart of everything we do, ensuring top-tier service.</p>
+    </div>
+    <div class="value-item">
+      <h3>Sustainability</h3>
+      <p>We are committed to minimizing our environmental impact with sustainable practices.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose">
+  <h2>Why Choose HexaFusion?</h2>
+  <ul>
+    <li>Trusted Brands & Products: We only partner with authentic brands.</li>
+    <li>Fast & Secure Delivery: Quick shipping with real-time tracking.</li>
+    <li>Exceptional Customer Support: Our team is available at every step.</li>
+    <li>Tech Tips & Resources: Stay updated with product guides and articles.</li>
+  </ul>
+</section>
+
+<!--<section class="contact">-->
+<!--  <h2>Get in Touch</h2>-->
+<!--  <p>We love hearing from you! Whether you have a question or feedback, reach out to us:</p>-->
+<!--  <p><strong>Email:</strong> support@hexafusion.com</p>-->
+<!--  <p><strong>Phone:</strong> +1 (123) 456-7890</p>-->
+<!--  <p><strong>Address:</strong> 123 Tech Park, Silicon Valley, CA, USA</p>-->
+<!--</section>-->
+
+<footer class="footer">
+  <div th:insert="~{footer::footer}"></div>
+</footer>
+</body>
+</html>
+

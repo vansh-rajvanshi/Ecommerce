@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="container-f" th:fragment="footer">
+    <div class="row-f">
+        <div class="footer-col">
+            <h4>online shop</h4>
+            <ul th:each="category : ${navbar}">
+                <li><a th:href="@{/categorywise/{id}(id=${category.id})}" th:text="${category.cat_name}" target="_blank"></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>get help</h4>
+            <ul>
+                <li><a th:href="@{/faq}">FAQ</a></li>
+                <li><a th:href="@{/errorpage}">shipping</a></li>
+                <li><a th:href="@{/errorpage}">returns</a></li>
+                <li><a th:href="@{/errorpage}">order status</a></li>
+                <li><a th:href="@{/errorpage}">payment options</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>company</h4>
+            <ul>
+                <li><a th:href="@{/about}">About Us</a></li>
+                <li><a th:href="@{/contact}">Contact Us</a></li>
+                <li><a th:href="@{/errorpage}">Our Services</a></li>
+                <li><a th:href="@{/errorpage}">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+                <a th:href="@{/errorpage}"><i class="fab fa-whatsapp"></i></a>
+                <a th:href="@{/errorpage}"><i class="fab fa-facebook-f"></i></a>
+                <a th:href="@{/errorpage}"><i class="fab fa-instagram"></i></a>
+                <a th:href="@{/errorpage}"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="copyright text-center">
+        <h5><a href="@{/home}">🌐</a> copyright &copy; 2024 HexaFusion all rights reserved</h5>
+        <br>
+        <small>♥ built by <a href="https://www.linkedin.com/in/vansh-rajvanshi-6b6524280/" target="_blank">Vansh Rajvanshi</a></small>
+    </div>
+</div>
+</body>
+</html>

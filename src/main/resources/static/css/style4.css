@@ -1,0 +1,290 @@
+/*Verification Page*/
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Full-page background */
+body {
+  background: #ffd6d6;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* OTP container styles */
+.otp-container {
+  background: #fff;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Fade-in animation for the container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*login page*/
+/* Logo styling */
+.logo img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+/* Heading and subtext */
+h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* OTP form and inputs */
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.otp-field {
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 22px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+/* Focus state for OTP input fields */
+.otp-field:focus {
+  border-color: #4facfe;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+}
+
+/* Verify button styles */
+.verify-btn {
+  background: #ff523b;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.verify-btn:hover {
+  background: white  ;
+  box-shadow: 0 5px 15px rgba(0, 162, 255, 0.4);
+}
+
+/* Resend OTP link */
+.resend {
+  font-size: 14px;
+  color: #777;
+  margin-top: 15px;
+}
+
+.resend a {
+  color: #4facfe;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.resend a:hover {
+  color: #00c1fe;
+}
+
+
+/* Container and Card Alignment */
+.container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  height: 100vh;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+/* Logo Styling */
+.companylogo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.companylogo img {
+  max-width: 200px;
+  height: auto;
+}
+
+/* Card Header */
+.card-header {
+  background-color: #ff523b;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Card Body and Form Styling */
+.card-body {
+  padding: 30px;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-control {
+  border-radius: 8px;
+  height: 45px;
+  font-size: 1rem;
+  padding-left: 15px;
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+/* Adjusting Input Fields and Button Alignment */
+.form-horizontal input[type="text"],
+.form-horizontal input[type="password"] {
+  margin-top: 10px;
+}
+
+/* Button Styling */
+.btn-primary {
+  margin-top: 15px;
+  width: 100%; /* Align button with input fields */
+  height: 45px;
+  border-radius: 8px;
+  font-weight: 600;
+  background-color: #ff523b;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+}
+/* Link Styling */
+span {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+span a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+span a:hover {
+  text-decoration: underline;
+}
+
+/* Base alert styles */
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+/* Styles for danger alerts */
+.alert-danger {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Red border */
+}
+
+/* Styles for success alerts */
+.alert-success {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    border: 1px solid #c3e6cb; /* Green border */
+}
+
+/* Invalid input styles */
+.invalid-input {
+    border: 2px solid #dc3545; /* Red border for invalid input */
+    background-color: #f8d7da; /* Light red background for input */
+}
+
+/* Optional: Add a hover effect to alert boxes */
+.alert:hover {
+    opacity: 0.9;
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+}
+
+.is-invalid {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-header {
+    font-size: 1.25rem;
+  }
+}

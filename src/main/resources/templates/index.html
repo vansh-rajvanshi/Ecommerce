@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HexaFusion</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="navbar" th:fragment="header">
+            <div class="logo">
+                <a th:href="@{/}"><img src="/Image/logo.png" width="125px" /></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a th:href="@{/login}">Home</a></li>
+                    <li class="dropdown" onclick="menutoggl()"><a class="active">Products
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                        <ul id="inneritems">
+                            <div th:each="category : ${navbar}">
+                                <li><a th:href="@{/login}" th:text="${category.cat_name}" target="_blank"></a></li>
+                            </div>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/login}">About</a></li>
+                    <li><a th:href="@{/login}">Contact</a></li>
+                    <li><a th:href="@{/login}">Account</a></li>
+                    <li><a th:href="@{/login}">Login</a></li>
+                </ul>
+            </nav>
+            <a href="#" onclick="toggleCart()"><img src="/Image/cart.png" width="30px" height="30px" id="cartIcon" /></a>
+            <div id="cartSidebar" class="cart-sidebar">
+                <button onclick="toggleCart()" class="close-cart"><i class="fas fa-times"></i></button>
+                <h2>Cart</h2>
+                <div id="cartItems"></div>
+                <div id="cartTotal" class="cart-total">Total: Rs. 0</div>
+                <button class="place-order">Place Order</button>
+            </div>
+            <img src="/Image/menu.png" class="menu-icon" onclick="menutoggle()">
+            <script th:src="@{/js/script.js}"></script>
+
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <h1>Here shopping becomes <br/>simple!</h1>
+                <p>"We trust something in a grocery store and assume it's good. We don't learn about the most precious thing in life—<br/>the food we put in our body. Educate yourself!"</p>
+                <a th:href="@{/login}" class="btn">Explore Now &#10140;</a> <!-- Changed link to /login -->
+            </div>
+            <div class="col-8">
+                <img src="/Image/speaker.jpeg" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ---------categories--------   -->
+<div class="small-container">
+    <h2 class="title">Categories</h2>
+    <div class="row">
+        <div class="col-4" th:each="category : ${category}">
+            <img th:src="${category.cat_img}" alt="" />
+            <h4>
+                <a th:href="@{/login}" th:text="${category.cat_name}" target="_blank"></a> <!-- Changed link to /login -->
+            </h4>
+        </div>
+    </div>
+    <!-- ---------featured products--------   -->
+    <h2 class="title">Featured Products</h2>
+    <div class="row">
+        <div class="col-4" th:each="product : ${featuredproducts}">
+            <img th:src="@{${product.imageUrl}}" alt="" />
+            <h4>
+                <a th:href="@{/login}" th:text="${product.name}" target="_blank"></a> <!-- Changed link to /login -->
+            </h4>
+            <p th:text="${product.price} + 'Rs.'"></p>
+        </div>
+    </div>
+</div>
+<!-- -----offer------ -->
+<div class="offer">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-8">
+                <img src="/Image/speaker.jpeg" alt="" />
+            </div>
+            <div class="col-8">
+                <p>Exclusively Available On SiyaShop</p>
+                <h1>Wireless Portable Bluetooth Speakers</h1>
+                <small>B M C Wireless Portable Bluetooth Speakers kt-125 with Mobile Holder, with USB, Memory Card and Bluetooth Connectivity (Kt-125)</small><br>
+                <a th:href="@{/login}" target="_blank" class="btn">Buy Now &#10140</a> <!-- Changed link to /login -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------testimonial------ -->
+<div class="testimonial">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <p>"We treat the customer as god. Sales are good due to low profit business, customers are satisfied with us because of the price."</p>
+                <img src="/Image/valueandbelief.jpeg" alt="">
+                <h3>Values And Beliefs</h3>
+            </div>
+            <div class="col-3">
+                <p>"We treat the customer as god. Sales are good due to low profit business, customers are satisfied with us because of the price."</p>
+                <img src="/Image/connection.jpg" alt="">
+                <h3>Build A Connection</h3>
+            </div>
+            <div class="col-3">
+                <p>"We treat the customer as god. Sales are good due to low profit business, customers are satisfied with us because of the price."</p>
+                <img src="/Image/certification.jpg" alt="">
+                <h3>Certifications, Awards</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -------brands------ -->
+<div class="brands">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-5">
+                <img src="/Image/Apple.png">
+            </div>
+            <div class="col-5">
+                <img src="/Image/Boat.png">
+            </div>
+            <div class="col-5">
+                <img src="/Image/JBL.jpeg">
+            </div>
+            <div class="col-5">
+                <img src="/Image/Realme.png">
+            </div>
+            <div class="col-5">
+                <img src="/Image/Samsung.png">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -------footer------ -->
+<footer class="footer">
+    <div class="container-f" th:fragment="footer">
+        <div class="row-f">
+            <div class="footer-col">
+                <h4>online shop</h4>
+                <ul th:each="category : ${navbar}">
+                    <li><a th:href="@{/login}" th:text="${category.cat_name}" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>get help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">shipping</a></li>
+                    <li><a href="#">returns</a></li>
+                    <li><a href="#">order status</a></li>
+                    <li><a href="#">payment options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>company</h4>
+                <ul>
+                    <li><a href="../../seeyashop-main/about.html">About Us</a></li>
+                    <li><a href="../../seeyashop-main/contact.html">Contact Us</a></li>
+                    <li><a href="product.html">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="copyright text-center">
+            <h5><a href="@{/}">🌐</a> copyright &copy; 2024 HexaFusion all rights reserved</h5>
+            <br>
+            <small>♥ built by <a href="https://www.linkedin.com/in/vansh-rajvanshi-6b6524280/" target="_blank">Vansh Rajvanshi</a></small>
+        </div>
+    </div>
+</footer>
+<!-- -------js for toggle menu----- -->
+<script src="js/script.js"></script>
+</body>
+</html>

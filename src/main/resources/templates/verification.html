@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/style4.css}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="otp-container">
+    <div class="logo">
+        <img src="Image/logo.png" alt="Company Logo">
+    </div>
+
+    <h2>OTP Verification</h2>
+    <p>Please enter the 6-digit OTP sent to your registered Email id.</p>
+
+    <form action="#" class="otp-form">
+        <div class="otp-inputs">
+            <input type="text" maxlength="1" class="otp-field" required>
+            <input type="text" maxlength="1" class="otp-field" required>
+            <input type="text" maxlength="1" class="otp-field" required>
+            <input type="text" maxlength="1" class="otp-field" required>
+            <input type="text" maxlength="1" class="otp-field" required>
+            <input type="text" maxlength="1" class="otp-field" required>
+        </div>
+        <button type="submit" class="verify-btn">Verify OTP</button>
+    </form>
+
+    <p class="resend">Didn’t receive the code? <a href="#">Resend OTP</a></p>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

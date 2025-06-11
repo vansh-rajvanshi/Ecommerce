@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<div class="navbar" th:fragment="header">
+    <div class="logo">
+        <a th:href="@{/home}"><img src="/Image/logo.png" width="125px" /></a>
+    </div>
+    <nav>
+        <ul id="MenuItems">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li class="dropdown" onclick="menutoggl()"><a class="active">Products
+                <i class="fas fa-caret-down"></i>
+            </a>
+                <ul id="inneritems">
+                    <div th:each="category : ${navbar}">
+                        <li><a th:href="@{/categorywise/{id}(id=${category.id})}" th:text="${category.cat_name}" target="_blank"></a></li>
+                    </div>
+                </ul>
+            </li>
+            <li><a th:href="@{/about}">About</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/userProfile}">Account</a></li>
+        </ul>
+    </nav>
+    <a href="#" onclick="toggleCart()"><img src="/Image/cart.png" width="30px" height="30px" id="cartIcon" /></a>
+    <div id="cartSidebar" class="cart-sidebar">
+        <button onclick="toggleCart()" class="close-cart"><i class="fas fa-times"></i></button>
+        <h2>Cart</h2>
+        <div id="cartItems"></div>
+        <div id="cartTotal" class="cart-total">Total: Rs. 0</div>
+        <button class="place-order">Place Order</button>
+    </div>
+    <img src="/Image/menu.png" class="menu-icon" onclick="menutoggle()">
+    <script th:src="@{/js/script.js}"></script>
+
+</div>
+</body>
+</html>
