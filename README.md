@@ -61,7 +61,7 @@ Make sure you have installed:
 
 - MySQL
 # 1. Clone & Enter Project
-git clone https://github.com/vansh-rajvanshi/Ecommerce.git<br>
+git clone https://github.com/vansh-rajvanshi/Ecommerce.git Ecommerce<br>
 cd Ecommerce<br>
 # 2. Cloudnary Configration
 ## Update src/main/Config/CloudnaryConfig with your Cloudnary settings:
